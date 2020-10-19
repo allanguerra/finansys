@@ -44,7 +44,7 @@ export class CategoriesService {
       );
   }
 
-  delete(id: number): Observable<void> {
+  remove(id: number): Observable<void> {
     return this.http.delete<void>(`${BASE_URL}/${endpoints.categories}/${id}`)
       .pipe(
         catchError(this.handleError)

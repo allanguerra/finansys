@@ -24,14 +24,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let category of categories">
           <td>
-            <strong>Lazer</strong><br>
-            <small>Cinama, praia, parque, etc</small>
+            <strong>{{category.title}}</strong><br>
+            <small>{{category.description}}</small>
           </td>
-          <td class="float-right">
-            <a class="btn btn-outline-info btn-sm mr-2" [routerLink]="[1, 'edit']">Editar</a>
-            <a class="btn btn-outline-danger btn-sm" (click)="console.log('batata')">Editar</a>
+          <td>
+            <div class="float-right">
+              <a class="btn btn-outline-info btn-sm mr-2" [routerLink]="[category.id, 'edit']">Editar</a>
+              <a class="btn btn-outline-danger btn-sm" (click)="remove(category.id)">Remover</a>
+            </div>
           </td>
         </tr>
       </tbody>
