@@ -19,7 +19,7 @@ export class CategoryListComponent implements OnInit {
   ngOnInit() {
     this.getCategories();
   }
-  
+
   public remove(id: number): void {
     if(confirm('Deseja excluir este item?')) {
       this.categoriesService.remove(id).subscribe(_ => {
@@ -30,7 +30,6 @@ export class CategoryListComponent implements OnInit {
 
   private getCategories(): void {
     this.categoriesService.getAll().subscribe((categories: Category[]) => {
-      console.log(categories);
       this.categories = categories;
     });
   }
