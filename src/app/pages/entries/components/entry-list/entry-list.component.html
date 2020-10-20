@@ -19,7 +19,9 @@
     <table class="table table-hover table-dark">
       <thead>
         <tr>
-          <th>Lançamentos</th>
+          <th>Lançamento</th>
+          <th>Categorias</th>
+          <th class="text-right">Valor</th>
           <th></th>
         </tr>
       </thead>
@@ -27,13 +29,21 @@
         <tr *ngFor="let entry of entries">
           <td>
             <strong>{{entry.name}}</strong><br>
-            <small>{{entry.description}}</small>
+            <small class="text-success">{{entry.date}}</small><br>
+            <small *ngIf="entry.description">{{entry.description}}</small>
           </td>
           <td>
-            <div class="float-right">
-              <a class="btn btn-outline-info btn-sm mr-2" [routerLink]="[entry.id, 'edit']">Editar</a>
-              <a class="btn btn-outline-danger btn-sm" (click)="remove(entry.id)">Remover</a>
-            </div>
+            {{entry.category.title}}
+          </td>
+          <td class="text-right">
+            <strong [ngClass]="{'text-danger': entry.type === 'expense', 'text-success': entry.type === 'renevue'}">
+              {{entry.amount | currency: 'BRL'}}
+            </strong><br>
+            <span class="badge badge-light">{{entry.paidText}}</span>
+          </td>
+          <td class="text-right">
+            <a class="btn btn-outline-info btn-sm mr-2" [routerLink]="[entry.id, 'edit']">Editar</a>
+            <a class="btn btn-outline-danger btn-sm" (click)="remove(entry.id)">Remover</a>
           </td>
         </tr>
       </tbody>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { EntriesService } from '../../services/entries-service/entries.service';
 import { Entry } from 'src/app/models/entry.model';
+import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-entry-list',
@@ -30,7 +31,7 @@ export class EntryListComponent implements OnInit {
 
   private getEntries(): void {
     this.entriesService.getAll().subscribe((entries: Entry[]) => {
-      this.entries = entries;
+      entries.forEach((entry: Entry) => this.entries.push(Object.assign(new Entry(), entry)));
     });
   }
 
