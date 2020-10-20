@@ -3,7 +3,8 @@ export const environment = {
 };
 
 export const endpoints = {
-  categories: 'categories'
+  categories: 'categories',
+  entries: 'entries'
 };
 
 export const BASE_URL = 'http://localhost:3000';
