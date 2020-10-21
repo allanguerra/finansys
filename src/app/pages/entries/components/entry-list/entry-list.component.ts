@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EntriesService } from '../../services/entries-service/entries.service';
-import { Entry } from 'src/app/models/entry.model';
+import { Entry } from 'src/app/shared/models/entry.model';
 
 @Component({
   selector: 'app-entry-list',

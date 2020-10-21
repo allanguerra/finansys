@@ -5,7 +5,7 @@ import { BASE_URL, endpoints } from '../../../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Category } from 'src/app/models/category.model';
+import { Category } from 'src/app/shared/models/category.model';
 
 @Injectable({
   providedIn: 'root'

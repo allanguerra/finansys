@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CategoriesService } from '../../services/categories-service/categories.service';
-import { Category } from 'src/app/models/category.model';
+import { Category } from 'src/app/shared/models/category.model';
 
 @Component({
   selector: 'app-category-list',

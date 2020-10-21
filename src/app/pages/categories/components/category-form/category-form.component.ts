@@ -6,7 +6,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { MessageService } from 'primeng/api';
 import { CategoriesService } from '../../services/categories-service/categories.service';
-import { Category } from 'src/app/models/category.model';
+import { Category } from 'src/app/shared/models/category.model';
 
 @Component({
   selector: 'app-category-form',

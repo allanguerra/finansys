@@ -7,8 +7,8 @@ import { switchMap } from 'rxjs/operators';
 import { MessageService } from 'primeng/api';
 import { EntriesService } from '../../services/entries-service/entries.service';
 import { CategoriesService } from 'src/app/pages/categories/services/categories-service/categories.service';
-import { Entry } from 'src/app/models/entry.model';
-import { Category } from 'src/app/models/category.model';
+import { Entry } from 'src/app/shared/models/entry.model';
+import { Category } from 'src/app/shared/models/category.model';
 
 @Component({
   selector: 'app-entry-form',

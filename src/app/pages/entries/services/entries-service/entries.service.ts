@@ -6,8 +6,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, flatMap } from 'rxjs/operators';
 
 import { CategoriesService } from 'src/app/pages/categories/services/categories-service/categories.service';
-import { Entry } from 'src/app/models/entry.model';
-import { Category } from 'src/app/models/category.model';
+import { Entry } from 'src/app/shared/models/entry.model';
+import { Category } from 'src/app/shared/models/category.model';
 
 @Injectable({
   providedIn: 'root'
