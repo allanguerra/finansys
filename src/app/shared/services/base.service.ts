@@ -58,18 +58,18 @@ export abstract class BaseService<T extends BaseModel> {
       );
   }
 
-  // PRIVATE METHODS
+  // PROTECTED METHODS
 
-  private handleError(error: any): Observable<any> {
+  protected handleError(error: any): Observable<any> {
     console.log(`Error on requisition: ${error}`);
     return throwError(error);
   }
 
-  private dataToModel(data: any): T {
+  protected dataToModel(data: any): T {
     return this.dataToModelFn(data);
   }
 
-  private dataToArrayModel(data: []): T[] {
+  protected dataToArrayModel(data: []): T[] {
     const resources: T[] = [];
     data
       .forEach(element => resources.push(this.dataToModelFn(element)));
