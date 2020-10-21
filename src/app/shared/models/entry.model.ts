@@ -1,6 +1,7 @@
 import { Category } from './category.model';
+import { BaseModel } from './base.model';
 
-export class Entry {
+export class Entry extends BaseModel {
   constructor(
     public id?: number,
     public name?: string,
@@ -11,7 +12,9 @@ export class Entry {
     public paid?: boolean,
     public categoryId?: number,
     public category?: Category
-  ) {}
+  ) {
+    super();
+  }
 
   get paidText(): string {
     return this.paid ? 'Pago' : 'Pendente';
@@ -20,5 +23,9 @@ export class Entry {
   static types = {
     expense: 'Despesa',
     revenue: 'Receita'
+  }
+
+  static fromData(data: any): Entry {
+    return Object.assign(new Entry(), data);
   }
 }
