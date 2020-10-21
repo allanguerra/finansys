@@ -3,9 +3,11 @@ import { HttpClient } from '@angular/common/http';
 
 import { BASE_URL, endpoints } from '../../../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, flatMap } from 'rxjs/operators';
 
+import { CategoriesService } from 'src/app/pages/categories/services/categories-service/categories.service';
 import { Entry } from 'src/app/models/entry.model';
+import { Category } from 'src/app/models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ import { Entry } from 'src/app/models/entry.model';
 export class EntriesService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private categoriesService: CategoriesService
   ) { }
 
   getAll(): Observable<Entry[]> {
@@ -31,16 +34,28 @@ export class EntriesService {
   }
 
   store(entry: Entry): Observable<Entry> {
-    return this.http.post<Entry>(`${BASE_URL}/${endpoints.entries}`, entry)
+    return this.categoriesService.getById(entry.categoryId)
       .pipe(
-        catchError(this.handleError)
+        flatMap((category: Category) => {
+          entry.category = category;
+          return this.http.post<Entry>(`${BASE_URL}/${endpoints.entries}`, entry)
+            .pipe(
+              catchError(this.handleError)
+            );
+        })
       );
   }
 
   update(entry: Entry): Observable<Entry> {
-    return this.http.put<Entry>(`${BASE_URL}/${endpoints.entries}/${entry.id}`, entry)
+    return this.categoriesService.getById(entry.categoryId)
       .pipe(
-        catchError(this.handleError)
+        flatMap((category: Category) => {
+          entry.category = category;
+          return this.http.put<Entry>(`${BASE_URL}/${endpoints.entries}/${entry.id}`, entry)
+            .pipe(
+              catchError(this.handleError)
+            );
+        })
       );
   }
 

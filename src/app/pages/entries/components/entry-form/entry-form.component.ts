@@ -6,7 +6,9 @@ import { switchMap } from 'rxjs/operators';
 
 import { MessageService } from 'primeng/api';
 import { EntriesService } from '../../services/entries-service/entries.service';
+import { CategoriesService } from 'src/app/pages/categories/services/categories-service/categories.service';
 import { Entry } from 'src/app/models/entry.model';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-entry-form',
@@ -21,6 +23,9 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   public submitting: boolean = false;
 
   public entry: Entry;
+  public categories: Category[];
+
+  public readonly MASK = { mask: Number, scale: 2, thousandsSeparator: '.', padFractionalZeros: true, NormalizeZeros: true, radix: ',' };
 
   private currentAction: string;
 
@@ -30,6 +35,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     private route: ActivatedRoute,
     private router: Router,
     private entriesService: EntriesService,
+    private categoriesService: CategoriesService,
     private messageService: MessageService,
     private fb: FormBuilder
   ) { }
@@ -38,6 +44,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     this.setCurrentAction();
     this.buildEntryForm();
     this.loadEntry();
+    this.loadCategories();
   }
 
   ngAfterContentChecked() {
@@ -55,6 +62,20 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     }
   }
 
+  public setPaid(paid: boolean): void {
+    this.entryForm.get('paid').setValue(paid);
+  }
+
+  public get typeOptions(): Array<any> {
+    return Object.entries(Entry.types)
+      .map(([value, text]) => {
+        return {
+          value,
+          text
+        }
+      });
+  }
+
   // PRIVATE METHODS
 
   private setCurrentAction(): void {
@@ -69,7 +90,12 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     this.entryForm = this.fb.group({
       id: [null],
       name: [null, [Validators.required, Validators.minLength(3)]],
-      description: [null]
+      description: [null],
+      type: [null, Validators.required],
+      amount: [null, Validators.required],
+      date: [null, Validators.required],
+      paid: [false, Validators.required],
+      categoryId: [null, Validators.required]
     });
   }
 
@@ -88,14 +114,21 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     const name = this.entry ? this.entry.name : '';
 
     if (this.currentAction === 'new') {
-      this.pageTitle = 'Nova Categoria';
+      this.pageTitle = 'Novo Lançamento';
     } else {
-      this.pageTitle= `Atualizar Categoria: ${name}`;
+      this.pageTitle= `Atualizar Lançamento: ${name}`;
     }
+  }
+
+  private loadCategories(): void {
+    this.categoriesService.getAll().subscribe((categories: Category[]) => {
+      this.categories = categories;
+    });
   }
 
   private storeEntry(): void {
     const entry: Entry = Object.assign(new Entry(), this.entryForm.value);
+    entry.amount = entry.amount.replace('.','').replace(',','.');
 
     this.entriesService.store(entry).subscribe((entry: Entry) => {
       this.entryForm.reset();
@@ -105,6 +138,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 
   private updateEntry(): void {
     const entry: Entry = Object.assign(new Entry(), this.entryForm.value);
+    entry.amount = entry.amount.replace('.','').replace(',','.');
 
     this.entriesService.update(entry).subscribe((entry: Entry) => {
       this.entryForm.reset();
@@ -114,7 +148,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 
   private successActions(entry: Entry): void {
     this.submitting = false;
-    this.messageService.add({...this.TOAST, detail: `Categoria ${entry.name} salva com sucesso!`});
+    this.messageService.add({...this.TOAST, detail: `Lançamento ${entry.name} salvo com sucesso!`});
     this.router.navigate(['entries']);
   }
 

@@ -27,6 +27,65 @@
     }
   ],
   "entries": [
-    { "id": 1, "name": "Salário", "description": "Recebimento de salário", "type": "renevue", "amount": "6000.00", "date": "19/10/2020", "paid": true, "categoryId": 4, "category": { "id": 4, "title": "Salário", "description": "Recebimento de salário" } }
+    {
+      "id": 1,
+      "name": "Salário",
+      "description": "Recebimento de salário",
+      "type": "renevue",
+      "amount": "6000.00",
+      "date": "19/10/2020",
+      "paid": true,
+      "categoryId": 4,
+      "category": {
+        "id": 4,
+        "title": "Salário",
+        "description": "Recebimento de salário"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Preisteishu Sincu",
+      "description": "Sonho Meu, Sonho Meu...",
+      "type": "expense",
+      "amount": "150000.00",
+      "date": "20/10/2020",
+      "paid": false,
+      "categoryId": "2",
+      "category": {
+        "id": 2,
+        "title": "Saúde",
+        "description": "Plano de saúde e Remédios"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Bolo de Chocolate",
+      "description": null,
+      "type": "renevue",
+      "amount": "150.00",
+      "date": "20/10/2020",
+      "paid": true,
+      "categoryId": "3",
+      "category": {
+        "id": 3,
+        "title": "Lazer",
+        "description": "Cinema, teatro, parques, praia, etc"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Remédio para peidar",
+      "description": "",
+      "type": "expense",
+      "amount": "6.00",
+      "date": "26/10/2020",
+      "paid": false,
+      "categoryId": "2",
+      "category": {
+        "id": 2,
+        "title": "Saúde",
+        "description": "Plano de saúde e Remédios"
+      }
+    }
   ]
 }
