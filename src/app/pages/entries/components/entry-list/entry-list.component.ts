@@ -30,7 +30,9 @@ export class EntryListComponent implements OnInit {
 
   private getEntries(): void {
     this.entriesService.getAll().subscribe((entries: Entry[]) => {
-      entries.forEach((entry: Entry) => this.entries.push(Object.assign(new Entry(), entry)));
+      entries
+        .sort((a, b) => b.id - a.id)
+        .forEach((entry: Entry) => this.entries.push(Object.assign(new Entry(), entry)));
     });
   }
 

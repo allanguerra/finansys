@@ -36,7 +36,7 @@
             {{entry.category.title}}
           </td>
           <td class="text-right">
-            <strong [ngClass]="{'text-danger': entry.type === 'expense', 'text-success': entry.type === 'renevue'}">
+            <strong [ngClass]="{'text-danger': entry.type === 'expense', 'text-success': entry.type === 'revenue'}">
               {{entry.amount | currency: 'BRL'}}
             </strong><br>
             <span class="badge badge-light">{{entry.paidText}}</span>

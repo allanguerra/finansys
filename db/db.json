@@ -31,7 +31,7 @@
       "id": 1,
       "name": "Salário",
       "description": "Recebimento de salário",
-      "type": "renevue",
+      "type": "revenue",
       "amount": "6000.00",
       "date": "19/10/2020",
       "paid": true,
@@ -61,7 +61,7 @@
       "id": 3,
       "name": "Bolo de Chocolate",
       "description": null,
-      "type": "renevue",
+      "type": "revenue",
       "amount": "150.00",
       "date": "20/10/2020",
       "paid": true,
@@ -85,6 +85,21 @@
         "id": 2,
         "title": "Saúde",
         "description": "Plano de saúde e Remédios"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Freela",
+      "description": "Esse é do bom",
+      "type": "revenue",
+      "amount": "35000.00",
+      "date": "20/10/2020",
+      "paid": true,
+      "categoryId": "5",
+      "category": {
+        "id": 5,
+        "title": "Freelas",
+        "description": "Trabalhos como freelancer"
       }
     }
   ]
