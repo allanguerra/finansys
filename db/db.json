@@ -58,21 +58,6 @@
       }
     },
     {
-      "id": 3,
-      "name": "Bolo de Chocolate",
-      "description": null,
-      "type": "revenue",
-      "amount": "150.00",
-      "date": "20/10/2020",
-      "paid": true,
-      "categoryId": "3",
-      "category": {
-        "id": 3,
-        "title": "Lazer",
-        "description": "Cinema, teatro, parques, praia, etc"
-      }
-    },
-    {
       "id": 4,
       "name": "Remédio para peidar",
       "description": "",
