@@ -6,10 +6,12 @@ import { CalendarModule } from 'primeng/calendar';
 import { IMaskModule } from 'angular-imask';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 @NgModule({
   declarations: [
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PageHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     CalendarModule,
     IMaskModule,
     // COMPONENTS
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PageHeaderComponent
   ]
 })
 export class SharedModule { }
