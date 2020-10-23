@@ -13,7 +13,7 @@ import { FormControl } from '@angular/forms';
 export class InputErrorComponent implements OnInit {
 
   @Input()
-  public formControl: FormControl
+  public control: FormControl
 
   constructor() { }
 
@@ -33,14 +33,14 @@ export class InputErrorComponent implements OnInit {
 
   private showErrorMessage(): boolean {
 
-    return this.formControl.invalid && this.formControl.touched;
+    return this.control.invalid && this.control.touched;
   }
 
   private getMessage(): string | null {
-    if (this.formControl.errors.required) {
+    if (this.control.errors.required) {
       return 'campo obrigatório';
-    } else if (this.formControl.errors.minlength) {
-      return `mínimo de ${this.formControl.errors.minlength.requiredLength} caracteres`
+    } else if (this.control.errors.minlength) {
+      return `mínimo de ${this.control.errors.minlength.requiredLength} caracteres`
     }
     return null;
 
