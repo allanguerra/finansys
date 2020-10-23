@@ -118,7 +118,7 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
   }
 
   protected setEditPageTitle(): string {
-    return 'Atualizando';
+    return 'Atualizar';
   }
 
   protected setMessage(): string {
