@@ -7,11 +7,13 @@ import { IMaskModule } from 'angular-imask';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { InputErrorComponent } from './components/input-error/input-error.component';
 
 @NgModule({
   declarations: [
     BreadcrumbComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    InputErrorComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
     IMaskModule,
     // COMPONENTS
     BreadcrumbComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    InputErrorComponent
   ]
 })
 export class SharedModule { }
