@@ -1,13 +1,11 @@
 <app-breadcrumb [items]="[{title: 'Categorias'}]"></app-breadcrumb>
 
-<div class="row mb-5">
-  <div class="col">
-    <h2 class="h2 border-left pl-2 text-light">Categorias</h2>
-  </div>
-  <div class="col">
-    <a class="btn btn-success float-right" routerLink="new">Nova categoria</a>
-  </div>
-</div>
+<app-page-header
+  [title]="'Categorias'"
+  [buttonLabel]="'Nova Categoria'"
+  [buttonRoute]="'new'"
+  [buttonClass]="'btn-success'"
+></app-page-header>
 
 <div class="row">
   <div class="col">
