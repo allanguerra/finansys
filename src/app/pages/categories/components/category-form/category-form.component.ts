@@ -2,11 +2,9 @@ import { Component, Injector } from '@angular/core';
 import { BaseFormComponent } from 'src/app/shared/components/base-form.component';
 
 import { Validators } from '@angular/forms';
-import { switchMap } from 'rxjs/operators';
 
 import { CategoriesService } from '../../services/categories-service/categories.service';
 import { Category } from 'src/app/shared/models/category.model';
-import { inject } from '@angular/core/testing';
 
 @Component({
   selector: 'app-category-form',
