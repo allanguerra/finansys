@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { IMaskModule } from 'angular-imask';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    BreadcrumbComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -13,10 +16,13 @@ import { IMaskModule } from 'angular-imask';
     IMaskModule
   ],
   exports: [
+    // MODULES
     CommonModule,
     ReactiveFormsModule,
     CalendarModule,
-    IMaskModule
+    IMaskModule,
+    // COMPONENTS
+    BreadcrumbComponent
   ]
 })
 export class SharedModule { }
