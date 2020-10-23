@@ -73,12 +73,12 @@
       }
     },
     {
-      "id": 6,
+      "id": 7,
       "name": "Salário",
       "description": "Recebimento de salário",
       "type": "revenue",
-      "amount": "60000.00",
-      "date": "21/10/2020",
+      "amount": "6000.00",
+      "date": "20/10/2020",
       "paid": true,
       "categoryId": "4",
       "category": {

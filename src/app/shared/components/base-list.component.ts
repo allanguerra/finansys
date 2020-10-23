@@ -29,7 +29,7 @@ export abstract class BaseListComponent<T extends BaseModel> implements OnInit {
 
   protected getModelList(): void {
     this.baseService.getAll().subscribe((modelList: T[]) => {
-      this.modelList = modelList;
+      this.modelList = modelList.sort((a, b) => b.id - a.id);
     });
   }
 

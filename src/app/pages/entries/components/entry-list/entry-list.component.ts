@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BaseListComponent } from 'src/app/shared/components/base-list.component';
 
 import { EntriesService } from '../../services/entries-service/entries.service';
 import { Entry } from 'src/app/shared/models/entry.model';
@@ -8,33 +9,12 @@ import { Entry } from 'src/app/shared/models/entry.model';
   templateUrl: './entry-list.component.html',
   styleUrls: ['./entry-list.component.scss']
 })
-export class EntryListComponent implements OnInit {
-
-  public entries: Entry[] = [];
+export class EntryListComponent extends BaseListComponent<Entry> {
 
   constructor(
-    private entriesService: EntriesService
-  ) { }
-
-  ngOnInit() {
-    this.getEntries();
-  }
-
-  public remove(id: number): void {
-    if(confirm('Deseja excluir este item?')) {
-      this.entriesService.remove(id).subscribe(_ => {
-        this.getEntries();
-      });
-    }
-  }
-
-  private getEntries(): void {
-    this.entriesService.getAll().subscribe((entries: Entry[]) => {
-      this.entries = [];
-      entries
-        .sort((a, b) => b.id - a.id)
-        .forEach((entry: Entry) => this.entries.push(Object.assign(new Entry(), entry)));
-    });
+    protected entriesService: EntriesService
+  ) {
+    super(entriesService);
   }
 
 }
