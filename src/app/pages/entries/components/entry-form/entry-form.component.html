@@ -1,10 +1,4 @@
-<nav>
-  <ol class="breadcrumb mb-5 bg-dark">
-    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-    <li class="breadcrumb-item"><a routerLink="/entries">Lançamentos</a></li>
-    <li class="breadcrumb-item active">{{pageTitle}}</li>
-  </ol>
-</nav>
+<app-breadcrumb [items]="[{title: 'Lançamentos', route: '/entries'}, {title: pageTitle}]"></app-breadcrumb>
 
 <div class="row mb-5">
   <div class="col">

@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { IMaskModule } from 'angular-imask';
+
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
@@ -11,6 +13,7 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     CalendarModule,
     IMaskModule
@@ -18,6 +21,7 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
   exports: [
     // MODULES
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     CalendarModule,
     IMaskModule,
